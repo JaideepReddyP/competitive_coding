@@ -4,24 +4,16 @@ using namespace std;
 
 vector<int> memo;
 
-int jumping(vector<int>& nums, int n) {
-    if(n == 0) return 0;
-    else if(memo[n] != -1) return memo[n];
-    for(int i = 0; i < n; i++) {
-        if(nums[i] >= n-i){
-            int jumps = jumping(nums, i);
-            memo[i] = jumps;
-            return jumps+1;
+int jump(vector<int>& nums) {
+    int jumps = 0, curEnd = 0, curFarthest = 0;
+    for (int i = 0; i < nums.size() - 1; i++) {
+        curFarthest = max(curFarthest, i + nums[i]);
+        if (i == curEnd) {
+            jumps++;
+            curEnd = curFarthest;
         }
     }
-    return 0;
-}
-
-int jump(vector<int>& nums) {
-    int n = nums.size();
-    memo.clear();
-    memo.resize(n, -1);
-    return jumping(nums, n-1);
+    return jumps;
 }
 
 int main() {
