@@ -1,8 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-map<int, int> in, out;
-
 int main() {
     int t;
 
@@ -10,50 +8,64 @@ int main() {
     while(t--) {
         int n;
         cin >> n;
+        string ans = "No";
+        int flag = 0;
         vector<int> a(n);
         int avg = 0;
+        long long sum = 0;
         for(int i = 0; i< n;i++) {
             cin >> a[i];
-            avg += a[i];
+            sum += a[i];
         }
-        if(avg%n != 0){
-            cout << "No" << endl;
+        // cout << sum;
+        if(sum%(long long)n){
+            cout << ans << endl;
             continue;
         }else {
-            avg /= n;
+            avg = (int)(sum/(long long)n);
         }
 
-        for(int k:a) {
-            int diff = max(avg, k) - min(avg,k);
+        vector<int> in(31,0), out(31,0);
 
-            int j = 1;
-            while((1<<j)<diff) j++;
-            int l = j-1;
-            while(l>=1) {
-                if((1<<j)-(1<<l) == diff){
-                    if(k > avg) {
-                        out[j]++;
-                        in[l]++;
-                    }
-                    else {
-                        in[j]++;
-                        out[l]++;
-                    }
+        for(int i = 0; i < n; i++) {
+            int diff = abs(avg-a[i]);
+            if(diff == 0) continue;
+
+            int give = 1, receive;
+            while((1<<give) <= diff) give++;
+
+            receive = give - 1;
+            while(receive >= 0) {
+                if((1<<give)-(1<<receive) == diff) {
                     break;
                 }
-                l--;
+                receive--;
             }
-            
-        }
-        int flag = 1;
-        for(auto i:in) {
-            if(out[i.first] != i.second) {
-                cout << "No" << endl;
-                flag = 0;
+            // cout << "gr: " << diff << ' ' << give << ' ' << receive << ' ' << (1<<give)-(1<<receive) << endl;
+            if((1<<give)-(1<<receive) == diff) {
+                if(avg > a[i]) {
+                    in[give]++;
+                    out[receive]++;
+                } else {
+                    in[receive]++;
+                    out[give]++;
+                }
+            } else {
+                flag = 1;
                 break;
             }
         }
 
-        if(flag)cout << "Yes" << endl;
+        if(flag) {
+            cout << ans << endl;
+            continue;
+        }
+        for(int i = 0; i < 31; i++) {
+            // cout << "in: " << i << ' ' << in[i] << ' ' << out[i] << endl;
+            if(in[i] != out[i]) break;
+            if(i == 30) ans = "Yes";
+        }
+
+        cout << ans << endl;
     }
 }
