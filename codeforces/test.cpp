@@ -1,17 +1,56 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<string>
 using namespace std;
 
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(0);
+void helper(string s, int letter,int size)
+{
+    int count = 0; 
+    int skipper = letter;
+    
+    if(skipper >= size)
+    {
+        cout<<s[letter] << count;
+        return;
+    }
+    if(s[letter] == s[skipper])
+    {
+        do{
+            count++;
+          }while(s[letter] == s[skipper + count]);
+        
+    }
+    
+    if(s[letter] != s[skipper + count])
+    {
+        cout<<s[letter] << count;
 
-    // cout << (1<<1)-(1<<0);
-    priority_queue<pair<int, int>> a;
-    a.push(make_pair(10,1));
-    a.push(make_pair(12,2));
-    a.push(make_pair(9, 3));
-    cout << a.top().first << a.top().second;
-    a.pop();
-    cout << a.top().first << a.top().second;
-
+        return helper(s,letter + count,size);
+    }
 }
+
+int main()
+{
+
+    // int size;
+    // cout << "enter test cases: ";
+    // cin >> size;
+
+   
+    //cout << str.size();
+
+    // for (int i = 0; i < size; i++)
+    // {
+        string str;
+        // cout << "enter string: ";
+        cin >> str;
+        int size = str.size();
+        // cout<<size;
+        helper(str, 0, size);
+        
+        
+
+    // }
+    
+
+
+} 
