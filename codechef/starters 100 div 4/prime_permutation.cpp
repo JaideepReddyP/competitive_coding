@@ -1,44 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int k = 1000*100;
-vector<int> prime(k+1, 1);
-
-
 int main() {
-    prime[0] = 0;
-    prime[1] = 0;
-	for (int p = 2; p * p <= k; p++) {
-        if (prime[p] == 1) {
-            for (int i = p * p; i <= k; i += p)
-                prime[i] = 0;
-        }
-    }
     int t;
     cin >> t;
     int n;
     while(t--) {
         cin >> n;
-        int flag = 1;
-        for(int i = 2; i < n; i++) {
-            if(prime[i]) {
-                if(prime[n-i]) {
-                    flag = 0;
-                    int l = n-i+1;
-                    for(int j = 0; j < n+1; j++) {
-                        if(l%(n+1) == 0) {
-                            l++;
-                            continue;
-                        }
-                        cout << l%(n+1) << ' ';
-                        l++;
-                    }
-                    break;
-                }
-            }
+        if(n < 4) {
+            cout << -1 << '\n';
+            continue;
         }
-        if(flag) cout << -1;
-        cout << endl;
+        int start;
+        if(n%4==0) {
+            start = 4;
+        }else if(n%4==1) {
+            cout << "4 5 1 2 3 ";
+            start = 9;
+        }else if(n%4==2) {
+            cout << "4 5 6 1 2 3 ";
+            start = 10;
+        }else if(n%4==3) {
+            cout << "6 7 1 2 3 4 5 ";
+            start = 11;
+        }
+        for(int i = start; i <= n; i+=4) cout << i-1 << ' ' << i << ' ' << i-3 << ' ' << i-2 << ' ';
+        cout << '\n';
     }
 	return 0;
 }
