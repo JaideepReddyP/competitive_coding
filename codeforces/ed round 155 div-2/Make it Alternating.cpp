@@ -1,45 +1,43 @@
 #include<bits/stdc++.h>
+#define int long long
 using namespace std;
 
-long long fact(long long a) {
-    long long ans = 1;
-    while(a) {
-        ans *= a--;
-        ans %= 998244353;
+void solve() {
+    string s;
+    cin >> s;
+
+    int n = s.size();
+    if(n == 1) {
+        cout << 0 << ' ' << 1 << '\n';
+        return;
     }
-    return ans;
+
+    vector<int> a;
+    int sum = 0, current = s[0], cnt = 1;
+    for(int i = 1; i < n; i++) {
+        cout << current << ' ';
+        if(s[i] == current) cnt++;
+        else {
+            current = current=='0'?'1':'0';
+            if(cnt > 1) {
+                a.push_back(cnt-1);
+                sum += cnt-1;
+            }
+            cnt = 1;
+        }
+    }
+    if(cnt > 1) a.push_back(cnt-1);
+
+    cout << sum << ' ';
+
+    
+
 }
 
-int main() {
+int32_t main() {
     ios_base::sync_with_stdio(false);
     cin.tie(0);
-
-    long long t;
+    int t;
     cin >> t;
-    while(t--) {
-        string s;
-        cin >> s;
-        long long n = s.size();
-
-        if(n == 1) {
-            cout << 0 << ' ' << 1 << '\n';
-            continue;
-        }
-
-        long long ops = 0, permut = 1;
-        char bit = s[0];
-        long long cnt = 1;
-        for(long long i = 1; i < n; i++) {
-            if(s[i] == bit) {
-                cnt++;
-            } else {
-                ops += cnt-1;
-                cnt = 1;
-                bit = (bit=='1')?'0':'1';
-            }
-        }
-        if(cnt > 1) ops += cnt-1;
-        cout << ops << ' ' << fact(ops+1) << '\n';
-    }
+    while(t--) solve();
 }
-
