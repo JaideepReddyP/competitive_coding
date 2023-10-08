@@ -31,26 +31,7 @@ void helper(string s, int letter,int size)
 int main()
 {
 
-    // int size;
-    // cout << "enter test cases: ";
-    // cin >> size;
-
-   
-    //cout << str.size();
-
-    // for (int i = 0; i < size; i++)
-    // {
-        string str;
-        // cout << "enter string: ";
-        cin >> str;
-        int size = str.size();
-        // cout<<size;
-        helper(str, 0, size);
-        
-        
-
-    // }
-    
+    cout << "test";
 
 
 } 
