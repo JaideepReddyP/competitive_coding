@@ -2,36 +2,33 @@
 #define int long long
 using namespace std;
 
+int mod = 998'244'353;
+
+int mult(int a, int b) {
+    return (a*b)%mod;
+}
+
 void solve() {
     string s;
     cin >> s;
-
-    int n = s.size();
-    if(n == 1) {
-        cout << 0 << ' ' << 1 << '\n';
-        return;
-    }
-
-    vector<int> a;
-    int sum = 0, current = s[0], cnt = 1;
-    for(int i = 1; i < n; i++) {
-        cout << current << ' ';
-        if(s[i] == current) cnt++;
+    int prod = 1, groups = 0, n = s.size(), cnt = 0;
+    char curr = s[0];
+    for(int i = 0; i < n; i++) {
+        if(s[i] == curr) cnt++;
         else {
-            current = current=='0'?'1':'0';
-            if(cnt > 1) {
-                a.push_back(cnt-1);
-                sum += cnt-1;
-            }
+            prod = mult(prod,cnt);
+            groups++;
             cnt = 1;
+            curr = (curr=='0')? '1':'0';
         }
     }
-    if(cnt > 1) a.push_back(cnt-1);
+    if(cnt) {
+        groups++;
+        prod = mult(prod,cnt);
+    }
+    for(int i = 1; i <= n-groups; i++) prod = mult(prod, i);
 
-    cout << sum << ' ';
-
-    
-
+    cout << n-groups << ' ' << prod << '\n';
 }
 
 int32_t main() {
