@@ -30,7 +30,7 @@ using namespace std;
 int main()
 {
     double s = sqrt(18)/2;
-    cout << s;
+    cout << 10%8;
 
 
 } 
