@@ -1,3 +1,5 @@
+// assumption abt b[i] <= b[i-1] war incorrect
+// below is correct ans
 #include<bits/stdc++.h>
 #define int long long
 using namespace std;
@@ -11,8 +13,13 @@ void solve() {
     cout << a[0];
     for(int i = 1; i < n; i++) {
         cout << ' ';
-        if(a[i-1] == a[i]) cout << m - (m%a[i]);
-        else cout << a[i];
+        int largest_multiple = m - (m%a[i]);
+        for(int j = largest_multiple; j >= 0; j-=a[i]) {
+            if(gcd(j, a[i-1]) == a[i]) {
+                cout << j;
+                break;
+            }
+        }
     }
     cout << '\n';
 }
