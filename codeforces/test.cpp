@@ -3,5 +3,6 @@ using namespace std;
 
 int main()
 {
-    cout << "Hello";
+    string s = "ba";
+    cout << s.compare("ab");
 } 
