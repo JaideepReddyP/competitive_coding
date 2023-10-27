@@ -5,17 +5,17 @@ using namespace std;
 void solve() {
     int n;
     cin >> n;
-    
-    int ans = 0;
-    vector<int> f(n + 1, 0), g(n + 1, 0);
+    string s;
+    cin >> s;
+    int check = 0;
     for(int i = 0; i < n; i++) {
-        int temp;
-        cin >> temp;
-        f[temp] += 1;
-        g[temp] = 1;
+        if(s[i] == '_') {
+            cout << i+1 << ' ';
+            check = 1;
+        }
     }
-
-    
+    if(!check) cout << -1;
+    cout << '\n';
 }
 
 int32_t main() {
