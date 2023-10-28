@@ -24,7 +24,7 @@ void solve() {
             if((int)div == 0) power = 0;
             if((div == (int)div) && isPowerOfTwo(div)) power--;
 
-            a[i] = a[i] << power;
+            a[i] = a[i] << power; // overflows even long long
             cnt += power;
         }
         cout << cnt << '\n';
