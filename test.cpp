@@ -14,6 +14,7 @@ int main()
     // vector<string> s = {"hi", "ho", "ab", "ba"};
     // sort(s.begin(), s.end());
     // for(auto i : s) cout << i << ' ';
-    string s = "1234";
-    cout << abs(sum(s.substr(0,1)) - sum(s.substr(1,3)));
+    int i = 1;
+    !i;
+    cout << i;
 } 
