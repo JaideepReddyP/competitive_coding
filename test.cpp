@@ -16,5 +16,5 @@ int main()
     // for(auto i : s) cout << i << ' ';
     int i = 1;
     !i;
-    cout << i;
+    cout << -2 % 3;
 } 
