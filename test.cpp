@@ -1,6 +1,20 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+void solve() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+
+    int ans = 0;
+    for(int k = 1; k <= n; k++) {
+        if(n%k == 0) {
+            int min_truck = INT_MAX, max_truck = 
+        }
+    }
+}
+
 int sum(string s) {
     int ans = 0;
     for(auto i : s) {
@@ -11,10 +25,19 @@ int sum(string s) {
 
 int main()
 {
-    // vector<string> s = {"hi", "ho", "ab", "ba"};
-    // sort(s.begin(), s.end());
-    // for(auto i : s) cout << i << ' ';
-    int i = 1;
-    !i;
-    cout << -2 % 3;
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for(int i = 0; i < n; i++) cin >> a[i];
+
+    auto minimum = min_element(a.begin(), a.end());
+
+    auto p = minimum;
+    while(p != a.end()) {
+        if(*p > *next(p)) {
+            cout << -1 << '\n';
+            break;
+        }
+    }
+    cout << distance(a.begin(), minimum);
 } 
