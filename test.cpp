@@ -12,19 +12,14 @@ int sum(string s) {
 
 int main()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for(int i = 0; i < n; i++) cin >> a[i];
+    int a, b, c;
+    cin >> a >> b >> c;
+    // cout << a << b << c;
 
-    auto minimum = min_element(a.begin(), a.end());
-
-    auto p = minimum;
-    while(p != a.end()) {
-        if(*p > *next(p)) {
-            cout << -1 << '\n';
-            break;
-        }
+    int diff = abs(b-c);
+    // cout << diff;
+    if(diff%2 == 0) {
+        int one = ((diff/2) <= a);
+        cout << one << ' ';
     }
-    cout << distance(a.begin(), minimum);
 } 
