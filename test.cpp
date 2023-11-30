@@ -12,14 +12,6 @@ int sum(string s) {
 
 int main()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
-    // cout << a << b << c;
-
-    int diff = abs(b-c);
-    // cout << diff;
-    if(diff%2 == 0) {
-        int one = ((diff/2) <= a);
-        cout << one << ' ';
-    }
+    int k = 31-__builtin_clz(32);
+    cout << k;
 } 

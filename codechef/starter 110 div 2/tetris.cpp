@@ -2,15 +2,15 @@
 #define int long long
 using namespace std;
 
-void solve() {
-    vector<int> a(3);
-    cin >> a[0] >> a[1] >> a[2];
+int pos(int l) {
+    
+}
 
-    for(int i = 0; i < 3; i++) {
-        cout << (((a[1] - a[2])&1)^1) << ' ';
-        rotate(a.begin(), a.begin()+1, a.end());
-    }
-    cout << '\n';
+void solve() {
+    int l;
+    cin >> l;
+
+    cout << pos(l) << '\n';
 }
 
 int32_t main() {

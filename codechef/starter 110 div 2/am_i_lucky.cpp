@@ -3,14 +3,11 @@
 using namespace std;
 
 void solve() {
-    vector<int> a(3);
-    cin >> a[0] >> a[1] >> a[2];
+    int n, x, k;
+    cin >> n >> x >> k;
 
-    for(int i = 0; i < 3; i++) {
-        cout << (((a[1] - a[2])&1)^1) << ' ';
-        rotate(a.begin(), a.begin()+1, a.end());
-    }
-    cout << '\n';
+    int b = x%k, g = (n-x)%k;
+    cout << abs(b-g) << '\n';
 }
 
 int32_t main() {
