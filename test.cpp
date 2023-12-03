@@ -10,8 +10,12 @@ int sum(string s) {
     return ans;
 }
 
+int ceiling(int a, int b) {
+    return ((a-1)/b) + 1;
+}
+
 int main()
 {
     int k = 31-__builtin_clz(32);
-    cout << k;
+    cout << ceiling(0, 2);
 } 
