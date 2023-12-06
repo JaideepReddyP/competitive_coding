@@ -17,5 +17,6 @@ int ceiling(int a, int b) {
 int main()
 {
     int k = 31-__builtin_clz(32);
-    cout << ceiling(0, 2);
+    string s = "hello";
+    cout << s.erase(2, 2);
 } 
